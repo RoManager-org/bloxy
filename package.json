@@ -20,9 +20,9 @@
     "test": "jest",
     "build": "tsc --skipLibCheck",
     "eslint": "eslint . --ext .ts",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "yarn run build",
     "create-docs": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs --namedAnchors --excludeExternals --out docs src && mkdocs build",
-    "prepare-windows": "pnpm install && pnpm run build && pnpm run create-docs && echo 'Finished'"
+    "prepare-windows": "yarn install && yarn run build && yarn run create-docs && echo 'Finished'"
   },
   "types": "./dist/index.d.ts",
   "keywords": [
