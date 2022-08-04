@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "debug": "^4.3.4",
-    "got": "^12.3.0",
+    "got": "^11.8.5",
     "signalr-client": "0.0.20",
     "tough-cookie": "^4.0.0",
     "tslib": "^2.4.0"

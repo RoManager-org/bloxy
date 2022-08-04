@@ -6,7 +6,7 @@ export default function getRequester (controller: RESTController, customRequeste
         let requester: null | any;
 
         try {
-            requester = import("got").then(mod => mod.default);
+            requester = require("got");
         } catch (e) {
             throw new Error(`Failed to retrieve module "got" and no custom requester provided!`);
         }
