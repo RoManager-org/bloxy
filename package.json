@@ -20,7 +20,7 @@
     "test": "jest",
     "build": "tsc --skipLibCheck",
     "eslint": "eslint . --ext .ts",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "create-docs": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs --namedAnchors --excludeExternals --out docs src && mkdocs build",
     "prepare-windows": "pnpm install && pnpm run build && pnpm run create-docs && echo 'Finished'"
   },
