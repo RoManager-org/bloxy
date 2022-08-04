@@ -48,6 +48,7 @@ import {
     GetRolePermissions,
     GetSelfGroupMembership,
     GetSocialLinks,
+    GetWallPosts,
     GetWallPostsOptions,
     JoinGroup,
     JoinGroupOptions,
@@ -267,7 +268,7 @@ export class GroupBase {
         });
     }
 
-    getJoinRequests (options: Omit<GetJoinRequestsOptions, "groupId">): Promise<CursorPage<GroupJoinRequest>> {
+    getJoinRequests (options: Omit<GetJoinRequestsOptions, "groupId">): Promise<CursorPage<GetJoinRequest>> {
         const CursorPageClass = require("./Asset").CursorPage;
 
         return this.client.apis.groupsAPI.getJoinRequests({
@@ -532,7 +533,7 @@ export class GroupBase {
         });
     }
 
-    getWallPosts (options: Omit<GetWallPostsOptions, "groupId">): Promise<CursorPage<GroupWallPost>> {
+    getWallPosts (options: Omit<GetWallPostsOptions, "groupId">): Promise<CursorPage<GetWallPosts>> {
         const CursorPageClass = require("./Asset").CursorPage;
 
         return this.client.apis.groupsAPI.getWallPosts({
@@ -735,33 +736,6 @@ export class Group extends GroupBase {
 }
 
 
-export interface GroupJoinRequestOptions {
-    id?: number;
-    user: PartialUserOptions;
-    group: PartialGroupOptions;
-    created: string;
-}
-
-
-export class GroupJoinRequest {
-    public client: Client;
-    public id: number | null;
-    public user: PartialUser;
-    public group: PartialGroup;
-    public created: Date;
-
-    constructor (data: GroupJoinRequestOptions, client: Client) {
-        const structures = retrieveStructures();
-
-        this.client = client;
-        this.id = data.id || null;
-        this.user = new structures.PartialUser(data.user, client);
-        this.group = new PartialGroup(data.group, client);
-        this.created = new Date(data.created);
-    }
-}
-
-
 export interface GroupRoleOptions {
     id?: number;
     name?: string;
@@ -886,47 +860,5 @@ export class GroupShout {
             id: data.group.id,
             name: data.group.name
         }, client);
-    }
-}
-
-
-export interface GroupWallPostOptions {
-    id: number;
-    poster: {
-        buildersClubMembershipType: string;
-        userId: number;
-        username: string;
-        displayName: string;
-    };
-    group: {
-        id: number;
-        name?: string;
-    };
-    body: string;
-    created: string;
-    updated: string;
-}
-
-
-export class GroupWallPost {
-    public client: Client;
-    public id: number;
-    public creator: GroupMember;
-    public content: string;
-    public created: Date;
-
-    constructor (data: GroupWallPostOptions, client: Client) {
-        this.client = client;
-        this.id = data.id;
-        this.content = data.body;
-        this.creator = new GroupMember({
-            group: {
-                id: data.group.id,
-                name: data.group.name
-            },
-            id: data.poster.userId,
-            name: data.poster.username
-        }, client);
-        this.created = new Date(data.created);
     }
 }
