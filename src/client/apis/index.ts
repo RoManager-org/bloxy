@@ -1,5 +1,4 @@
 import Client from "../Client";
-import GeneralAPI from "./GeneralAPI";
 import AccountInformationAPI from "./AccountInformationAPI";
 import AccountSettingsAPI from "./AccountSettingsAPI";
 import AdConfigurationAPI from "./AdConfigurationAPI";
@@ -9,24 +8,26 @@ import AuthAPI from "./AuthAPI";
 import AvatarAPI from "./AvatarAPI";
 import BadgesAPI from "./BadgesAPI";
 import BillingAPI from "./BillingAPI";
-import CaptchaAPI from "./CaptchaAPI";
 import CatalogAPI from "./CatalogAPI";
 import ChatAPI from "./ChatAPI";
 import ContactsAPI from "./ContactsAPI";
+import DataAPI from "./DataAPI";
 import DevelopAPI from "./DevelopAPI";
 import EconomyAPI from "./EconomyAPI";
 import EconomyCreatorStatsAPI from "./EconomyCreatorStatsAPI";
 import EngagementPayoutsAPI from "./EngagementPayoutsAPI";
 import FollowingsAPI from "./FollowingsAPI";
 import FriendsAPI from "./FriendsAPI";
-import GamesAPI from "./GamesAPI";
 import GameInternationalizationAPI from "./GameInternationalizationAPI";
+import GamesAPI from "./GamesAPI";
+import GeneralAPI from "./GeneralAPI";
 import GroupsAPI from "./GroupsAPI";
 import InventoryAPI from "./InventoryAPI";
 import ItemConfigurationAPI from "./ItemConfigurationAPI";
 import LocaleAPI from "./LocaleAPI";
 import MetricsAPI from "./MetricsAPI";
 import NotificationsAPI from "./NotificationsAPI";
+import OtherAPI from "./OtherAPI";
 import PremiumFeaturesAPI from "./PremiumFeaturesAPI";
 import PresenceAPI from "./PresenceAPI";
 import PrivateMessagesAPI from "./PrivateMessagesAPI";
@@ -34,10 +35,8 @@ import PublishAPI from "./PublishAPI";
 import ThumbnailsAPI from "./ThumbnailsAPI";
 import TradesAPI from "./TradesAPI";
 import TranslationRolesAPI from "./TranslationRolesAPI";
-import UsersAPI from "./UsersAPI";
-import OtherAPI from "./OtherAPI";
 import TwoStepVerificationAPI from "./TwoStepVerificationAPI";
-import DataAPI from "./DataAPI";
+import UsersAPI from "./UsersAPI";
 
 
 export declare type APIs = {
@@ -50,7 +49,6 @@ export declare type APIs = {
     avatarAPI: AvatarAPI;
     badgesAPI: BadgesAPI;
     billingAPI: BillingAPI;
-    captchaAPI: CaptchaAPI;
     catalogAPI: CatalogAPI;
     chatAPI: ChatAPI;
     contactsAPI: ContactsAPI;
@@ -93,7 +91,6 @@ export default function initAPIs (client: Client): APIs {
         avatarAPI: new AvatarAPI(client),
         badgesAPI: new BadgesAPI(client),
         billingAPI: new BillingAPI(client),
-        captchaAPI: new CaptchaAPI(client),
         catalogAPI: new CatalogAPI(client),
         chatAPI: new ChatAPI(client),
         contactsAPI: new ContactsAPI(client),
