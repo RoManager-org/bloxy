@@ -414,20 +414,16 @@ export type GetWallPostsOptions = {
     cursor?: string;
 }
 export type GetWallPosts = {
-    previousPageCursor: string;
-    nextPageCursor: string;
-    data: {
-        id: number;
-        body: string;
-        created: string;
-        updated: string;
-        poster: {
-            buildersClubMembershipType: "None" | string;
-            userId: number;
-            username: string;
-            displayName: string;
-        };
-    }[];
+    id: number;
+    body: string;
+    created: string;
+    updated: string;
+    poster: {
+        buildersClubMembershipType: "None" | string;
+        userId: number;
+        username: string;
+        displayName: string;
+    }
 }
 export type CreateWallPostOptions = {
     groupId: number;
@@ -435,7 +431,7 @@ export type CreateWallPostOptions = {
     captchaToken: string;
     captchaProvider: "PROVIDER_ARKOSELABS" | string;
 }
-export type CreateWallPost = GetWallPosts["data"][0];
+export type CreateWallPost = GetWallPosts;
 export type DeleteWallPostOptions = {
     groupId: number;
     id: number;
