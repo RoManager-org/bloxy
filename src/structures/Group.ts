@@ -533,7 +533,7 @@ export class GroupBase {
         });
     }
 
-    getWallPosts (options: Omit<GetWallPostsOptions, "groupId">): Promise<CursorPage<GetWallPosts[]>> {
+    getWallPosts (options: Omit<GetWallPostsOptions, "groupId">): Promise<CursorPage<GetWallPosts>> {
         const CursorPageClass = require("./Asset").CursorPage;
 
         return this.client.apis.groupsAPI.getWallPosts({
