@@ -1,5 +1,6 @@
-import Client from "../../client/Client";
+import { Agent } from "https";
 import { Cookie, CookieJar } from "tough-cookie";
+import Client from "../../client/Client";
 import {
     DefaultCreateCookieOptions,
     DefaultRESTControllerOptions,
@@ -11,11 +12,11 @@ import {
     RESTResponseDataType,
     RESTResponseHandler
 } from "../../interfaces/RESTInterfaces";
+import { utilMergeDeep } from "../../util/utilFunctions";
+import getRequester from "./lib/getRequester";
 import updateXCSRFToken from "./lib/updateXCSRFToken";
 import RESTRequest from "./request";
 import responseHandlers from "./response/handlers";
-import getRequester from "./lib/getRequester";
-import { utilMergeDeep } from "../../util/utilFunctions";
 
 
 class RESTController {
@@ -153,19 +154,19 @@ class RESTController {
     }
 
     /**
-     * Sets the proxy for the requests
-     * @param {string} proxyURL The proxy URL
+     * Sets the http agent for the requests
+     * @param {Agent} agent The HTTP Agent
      */
-    setProxy (proxyURL: string): void {
-        this.options.proxy = proxyURL;
+    setAgent (agent: Agent): void {
+        this.options.agent = agent;
     }
 
     /**
-     * Gets the proxy used
-     * @returns {string | undefined}
+     * Gets the http agent used
+     * @returns {Agent | undefined}
      */
-    getProxy (): string | undefined {
-        return this.options.proxy;
+    getAgent (): Agent | undefined {
+        return this.options.agent;
     }
 
     /**

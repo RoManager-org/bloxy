@@ -1,3 +1,4 @@
+import { Agent } from "https";
 import RESTRequest from "../controllers/rest/request";
 import RESTResponse from "../controllers/rest/response";
 
@@ -13,9 +14,9 @@ export declare type RESTControllerOptions = {
      */
     userAgent?: string;
     /**
-     * If specified, the url which the request will be proxied through
+     * If specified, the agent to use for http requests
      */
-    proxy?: string;
+    agent?: Agent;
     /**
      * The current XCSRF token
      */
@@ -53,9 +54,9 @@ export declare type RESTRequestOptions = {
      */
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS" | string;
     /**
-     * The proxy to use
+     * The agent to use
      */
-    proxy?: string;
+    agent?: Agent;
     /**
      * If the request should follow all redirects
      */
@@ -158,7 +159,7 @@ export const DefaultCreateCookieOptions = {
 
 export const DefaultRESTControllerOptions = {
     userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
-    proxy: undefined,
+    agent: undefined,
     xcsrf: undefined,
     xcsrfSet: undefined,
     xcsrfRefreshInterval: 5 * 60 * 1000,
