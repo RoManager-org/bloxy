@@ -1,4 +1,3 @@
-import got from "got/dist/source";
 import RESTController from "../RESTController";
 
 export default function getRequester (controller: RESTController, customRequester?: RESTController["requester"]) {
@@ -6,7 +5,7 @@ export default function getRequester (controller: RESTController, customRequeste
         let requester: null | any;
 
         try {
-            requester = got.extend({
+            requester = require("got").extend({
                 agent: {
                     https: controller.getAgent(),
                     http: controller.getAgent()
